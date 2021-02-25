@@ -77,38 +77,42 @@ class Carousel extends React.Component{
                 )
               }
             })
-          }    
-          <div className='carousel-indicators'>
-            {
-              (this.props.showIndicators)
-              ? (this.props.elements).map((elemnt, index)=>{
-                  if(this.state.currentIndex === index ){
-                    return (
-                      <a key={uniqid()}>
-                        <Label onClick = {()=> this.gotToSlide(index) } circular color='black' empty  />  
-                      </a>
-                    )
-                  }else{
-                    return (
-                      <a key={uniqid()}>
-                        <Label onClick = {()=> this.gotToSlide(index) } circular color='grey' empty  />  
-                      </a>
-                    )
-                  }
-                })
-              :null
-            }
-          </div>  
-          {
-            (this.props.showNextPrev)?
-              <Button className='prev' onClick = {()=>this.prevClicked()} icon='caret left' />
-            :null
           }
-          {
-            (this.props.showNextPrev)?
-            <Button className='next' onClick = {()=>this.nextClicked()} icon='caret right' />
-            :null
-          }
+          <div className='carousel-control'>    
+            <div className='carousel-indicators'>
+              {
+                (this.props.showIndicators)
+                ? (this.props.elements).map((elemnt, index)=>{
+                    if(this.state.currentIndex === index ){
+                      return (
+                        <a key={uniqid()}>
+                          <Label onClick = {()=> this.gotToSlide(index) } circular color='black' empty  />  
+                        </a>
+                      )
+                    }else{
+                      return (
+                        <a key={uniqid()}>
+                          <Label onClick = {()=> this.gotToSlide(index) } circular color='grey' empty  />  
+                        </a>
+                      )
+                    }
+                  })
+                :null
+              }
+            </div>  
+            <div className='carousel-button'>
+              {
+                (this.props.showNextPrev)?
+                  <Button className='prev' onClick = {()=>this.prevClicked()} icon='caret left' />
+                :null
+              }
+              {
+                (this.props.showNextPrev)?
+                <Button className='next' onClick = {()=>this.nextClicked()} icon='caret right' />
+                :null
+              }
+            </div>
+          </div>
           
         </Card.Content>
       </Card>
